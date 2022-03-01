@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block head %}
+
+<style>
+    .contact-form{
+        padding: 50px;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="contact-form">
+    <h3>Feedback</h3>
+    <form action="" method="post">{% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
+        </div>
+        <div class="form-group">
+            <label for="desc">Feedback</label>
+            <textarea class="form-control" id="desc" name='desc' rows="3" placeholder="We would love to hear your experience with us !"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+{% endblock %}

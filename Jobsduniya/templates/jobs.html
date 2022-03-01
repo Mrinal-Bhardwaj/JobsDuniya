@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+    <style>
+
+        .job-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            /* margin: 80px; */
+            flex-wrap: wrap;
+        }
+        .job-container > div{
+            flex: 40%;
+        }
+        .job{
+            display: flex;
+            flex-direction: column;
+            border: solid 0.5px rgb(57, 153, 190);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            /* width: 50%; */
+        }
+        .job-heading{
+            font-size: large;
+            font-weight: bold;
+        }
+        .job-location{
+            margin-top: -10px;
+            font-size: medium;
+        }
+        .job-salary{
+            font-size: medium;
+            font-weight: bolder;
+            margin-top: -12px;
+        }
+        .job-description{
+            margin-top: 20px;
+        }
+        .job-description ul{
+            list-style-type: disc;
+        }
+
+        .btn{
+            background-image: linear-gradient(to right, rgb(22, 154, 187) , skyblue);
+            width: 130px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .btn-apply{
+            text-decoration: none;
+            color: white;
+        }
+        .btn-apply:hover{
+            text-decoration: none;
+            color: black;
+        }
+        .headingtext{
+            padding: 15px;
+            color: #212529;
+            font-weight: 400;
+            font-size: 30px;
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="headingtext">
+        <strong>Jobs For You:</strong>
+    </div>
+    <div class="job-container">
+        {% for c in all_jobs %}
+        {% if c.post_or_not == True %}
+        <div class="job">
+            <div class="job-heading">
+                <p>{{c.title}} ({{c.Designation}})</p>
+            </div>
+            <div class="job-industry">
+                <p style="font-weight: 400;">{{c.industryy}}, {{c.location}}</p>
+            </div>
+            <div class="job-location">
+                <p></p>
+            </div>
+            <strong class="job-salary">CTC - {{c.Ctc}} Lpa</strong>
+            <div class="job-description">
+             <span style="font-weight: bold;">About Job:</span>
+                <ul>
+                    <li><span style="font-weight: 600;">Education Qualification: </span>{{c.Education_Qualification}}</li>
+                    <li><span style="font-weight: 600;">Experience Required: </span>{{c.Experience}} Years</li>
+                    <li><span style="font-weight: 600;">JobType: </span>{{c.JobType}}</li>
+                    <li><span style="font-weight: 600;">Responsibilities: </span>{{c.Responsibility}}</li>
+                </ul>
+            </div>
+            <button type="button" class="applybtn btn btn-primary"><a href="{{c.apply_link}}" class="btn-apply">Apply Now</a></button>
+        </div>        
+        {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

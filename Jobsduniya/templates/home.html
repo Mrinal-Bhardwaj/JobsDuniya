@@ -1,0 +1,254 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+body {
+margin: 0;
+padding: 0;
+}
+
+.header {
+margin-top:100px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+h1 {
+color:rgba(10, 10, 10, 0.7);
+margin-bottom: 10px;
+font-size: 45px;
+letter-spacing: 2px;
+text-align: center;
+}
+
+.search-field {
+height: 50px;
+padding: 20px;
+border: none;
+border-radius: 10px;
+outline: none;
+}
+
+.role {
+width: 600px;
+}
+
+/* .loc {
+width: 200px;
+} */
+
+.search-btn {
+height: 50px;
+width: 150px;
+background: #ffeb3b;
+border: none;
+color: #000;
+border-radius: 25px;
+}
+
+.search-btn:hover {
+background: #ffc107;
+cursor: pointer;
+}
+
+.form-box {
+background: #dde4eb;
+padding: 10px;
+border-radius: 8px;
+}
+
+@media screen and (max-width:824px){
+    h1{
+        font-size: 35px;
+    }
+    .search-field{
+        height: 45px;
+        padding: 10px;
+    }
+    .role{
+        width: 500px;
+    }
+    .form-box{
+        padding: 8px;
+    }
+
+}
+
+@media screen and (max-width:710px){
+    h1{
+        font-size: 30px;
+    }
+    .search-field{
+        height: 45px;
+        padding: 10px;
+    }
+    .role{
+        width: 400px;
+    }
+    .form-box{
+        padding: 6px;
+    }
+}
+
+@media screen and (max-width:610px){
+    h1{
+        font-size: 25px;
+    }
+    .search-field{
+        height: 45px;
+        padding: 10px;
+    }
+    .role{
+        width: 300px;
+    }
+    .form-box{
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width:510px){
+    h1{
+        font-size: 17px;
+    }
+    .search-field{
+        height: 30px;
+    }
+    .role{
+        width: 185px;
+    }
+    .form-box{
+        padding: 2px;
+    }
+    .search-btn{
+        height: 30px;
+        width: 80px;
+    }
+
+}
+
+@media screen and (max-width:300px){
+    h1{
+        font-size: 14px;
+    }
+    .role{
+        width: 150px;
+    }
+}
+
+/* Css for job container */
+
+.job-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            /* margin: 80px; */
+            flex-wrap: wrap;
+        }
+        .job-container > div{
+            flex: 40%;
+        }
+        .job{
+            display: flex;
+            flex-direction: column;
+            border: solid 0.5px rgb(57, 153, 190);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            /* width: 50%; */
+        }
+        .job-heading{
+            font-size: large;
+            font-weight: bold;
+        }
+        .job-location{
+            margin-top: -10px;
+            font-size: medium;
+        }
+        .job-salary{
+            font-size: medium;
+            font-weight: bolder;
+            margin-top: -12px;
+        }
+        .job-description{
+            margin-top: 20px;
+        }
+        .job-description ul{
+            list-style-type: disc;
+        }
+
+        .btn{
+            background-image: linear-gradient(to right, #212529 , #788694);
+            width: 130px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .btn-apply{
+            text-decoration: none;
+            color: white;
+        }
+        .btn-apply:hover{
+            text-decoration: none;
+            color: black;
+        }
+        .headingtext{
+            padding: 15px;
+            color: rgb(110, 108, 108);
+            font-weight: 400;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="header">
+    <form method="get" action="/jobsduniya/search/">
+        <h1>Find a job of your choice</h1>
+        <div class="form-box">
+            <input type="text" class="search-field role" placeholder="Search here..." name="search" id="searchkey">
+            <button class="search-btn" type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="headingtext">
+    <strong>Jobs For You:</strong>
+</div>
+<div class="job-container">
+    {% for c in all_jobs %}
+    {% if c.post_or_not == True %}
+    <div class="job">
+        <div class="job-heading">
+            <p>{{c.title}} ({{c.Designation}})</p>
+        </div>
+        <div class="job-industry">
+            <p style="font-weight: 400;">{{c.industryy}}, {{c.location}}</p>
+        </div>
+        <div class="job-location">
+            <p></p>
+        </div>
+        <strong class="job-salary">CTC - {{c.Ctc}} Lpa</strong>
+        <div class="job-description">
+         <span style="font-weight: bold;">About Job:</span>
+            <ul>
+                <li><span style="font-weight: 600;">Education Qualification: </span>{{c.Education_Qualification}}</li>
+                <li><span style="font-weight: 600;">Experience Required: </span>{{c.Experience}} Years</li>
+                <li><span style="font-weight: 600;">JobType: </span>{{c.JobType}}</li>
+                <li><span style="font-weight: 600;">Responsibilities: </span>{{c.Responsibility}}</li>
+            </ul>
+        </div>
+        <button type="button" class="applybtn btn btn-primary"><a href="{{c.apply_link}}" class="btn-apply">Apply Now</a></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+    
+{% endblock %}

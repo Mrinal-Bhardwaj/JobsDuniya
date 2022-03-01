@@ -1,0 +1,117 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<style>
+
+/* h1{
+    text-align: center;
+    color: #343a40;
+    padding-top: 25px;
+}
+h2{
+    text-align: center;
+    color: #434c55;
+}
+
+.postbutton{
+    text-align: center;
+}
+
+.postbutton button{
+    width: 215px;
+    height: 80px;
+    color: white;
+    font-size: 40px;
+    background-color: rgb(255, 138, 128);
+    border: none;
+    border-radius: 6px;
+}
+
+.postbutton button:hover{
+    background-color: rgb(255, 102, 102);
+}
+
+.reachbutton{
+    text-align: center;
+    padding-top: 20px;
+}
+.reachbutton button{
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(255, 179, 102);
+    color: white;
+    height: 40px;
+    width: 150px;
+}
+.reachbutton button:hover{
+    background-color: rgb(255, 128, 0);
+} */
+.hero{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+}
+.hero__cta-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.hero__svg{
+    height: 70vh;
+    padding: 30px;
+}
+.cta-section__text{
+    font-weight: 600;
+    color: rgb(80, 74, 74);
+    font-size: 18px;
+    text-align: center;
+}
+.cta__section-button{
+    display: flex;
+    
+}
+
+@media screen and (max-width: 1110px){
+    .hero{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .hero__svg{
+        height: 70vh;
+        padding-right: 30px;
+        width: 100%;
+    }
+} 
+
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+    <div class="hero">
+        <div class="hero__cta-section">
+            <p class="cta-section__text">
+                "JobsDuniya" is a dedicated online platform for job seekers and recruiters from all segments
+                of the packaging-printing industry, including packaging: printing, publishing, chemicals and substrates.
+            </p>
+            <div class="cta__section-button">
+                <form action="/jobsduniya/postjob/">
+                    <div class="postbutton">
+                        <button type="submit" class="btn btn-warning btn-lg" style="font-weight: 500; color: beige;">Post Job</button><br><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="hero__image">
+            <img src="/static/illustration.svg/" alt="" class="hero__svg">
+        </div>
+    </div>
+
+{% endblock %}

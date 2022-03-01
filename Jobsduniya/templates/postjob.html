@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+
+{% block head %}
+<style>
+    .post-form{
+        padding: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="post-form">
+    <h3>Job Details</h3><br>
+    <form action="" method="post">{% csrf_token %}
+        <div class="form-group">
+            <label for="name">Job Title : </label>
+            <input type="text" class="form-control" id="jobtitle" name='jobtitle' placeholder="Enter Job Title" required>
+        </div>
+        <!-- <div class="form-group">
+            <label for="name">Industry : </label>
+            <input type="text" class="form-control" id="jobindustry" name='jobindustry' placeholder="Enter Industry">
+        </div> -->
+        <div class="form-group">
+            <label for="name">Industry : &nbsp;&nbsp;&nbsp;</label>
+            <select name="jobindustry" id="jobindustry" class="btn btn-info dropdown-toggle">
+                <option value="Packaging">Packaging</option>
+                <option value="Printing">Printing</option>
+                <option value="Publishing">Publishing</option>
+                <option value="Chemicals">Chemicals</option>
+                <option value="Substrats">Substrats</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Designation : </label>
+            <input type="text" class="form-control" id="jobdesignation" name='jobdesignation' placeholder="Designation Offered">
+        </div>
+        <div class="form-group">
+            <label for="name">Responsibility : </label>
+            <textarea class="form-control" id="jobresponsibility" name='jobresponsibility' rows="3" placeholder="Responsibilities" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="name">Experience : </label>
+            <input type="text" class="form-control" id="jobexperience" name='jobexperience' placeholder="Enter a number in terms of year" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Education Qualification : </label>
+            <input type="text" class="form-control" id="jobeducation" name='jobeducation' placeholder="Recent Education or Pursuing - Mention your requirement" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Employer Name : </label>
+            <input type="text" class="form-control" id="jobemployer" name='jobemployer' placeholder="Name of the Employer" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Employer Phone : </label>
+            <input type="tel" class="form-control" id="jobempphone" name='jobempphone' pattern="[0-9]{10}" placeholder="Enter 10 Digit Phone Number - Your phone number will completely be safe with us.">
+        </div>
+        <div class="form-group">
+            <label for="name">Employer Email : </label>
+            <input type="email" class="form-control" id="jobempemail" name='jobempemail' placeholder="Employer Email - Your email will completely be safe with us." required>
+        </div>
+        <div class="form-group">
+            <label for="name">Employer Website : </label>
+            <input type="text" class="form-control" id="jobempwebsite" name='jobempwebsite' placeholder="Employer Website or company website - if any">
+        </div>
+        <div class="form-group">
+            <label for="name">CTC : </label>
+            <input type="text" class="form-control" id="jobctc" name='jobctc' placeholder="CTC or Package Offered - Enter a number in terms of LPA offered">
+        </div>
+        <div class="form-group">
+            <label for="name">Location : </label>
+            <input type="text" class="form-control" id="joblocation" name='joblocation' placeholder="Work Location">
+        </div>
+        <div class="form-group">
+            <label for="name">Job Type : &nbsp;&nbsp;&nbsp;</label>
+            <select name="jobtype" id="jobtype" class="btn btn-info dropdown-toggle" required>
+                <option value="Full Time">Full Time</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Intership">Internship</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Apply Link : </label>
+            <input type="text" class="form-control" id="jobapplylink" name='jobapplylink' placeholder="How to Apply or 'Link -> (www.example.com)'">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
